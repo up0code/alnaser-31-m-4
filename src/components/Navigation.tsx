@@ -102,8 +102,8 @@ export function Navigation() {
               <Users size={20} />
             </div>
             <div className="hidden sm:block text-left">
-              <h1 className="font-headline font-black text-sm leading-tight text-foreground">{t.common.appName}</h1>
-              <p className="text-[9px] text-foreground font-headline uppercase tracking-widest font-black">
+              <h1 className="font-headline font-black text-sm leading-tight text-black dark:text-white">{t.common.appName}</h1>
+              <p className="text-[9px] text-black dark:text-white font-headline uppercase tracking-widest font-black opacity-80">
                 {language === 'ar' ? 'منصة إدارة المجتمع' : language === 'rw' ? 'Urubuga rw\'abaturage' : language === 'fr' ? 'Hub Communautaire' : 'Community Hub'}
               </p>
             </div>
@@ -116,7 +116,7 @@ export function Navigation() {
               <Link 
                 key={link.name} 
                 href={link.href}
-                className="text-[10px] font-black uppercase tracking-[0.2em] hover:text-primary transition-all text-foreground relative group"
+                className="text-[10px] font-black uppercase tracking-[0.2em] hover:text-primary transition-all text-black dark:text-white relative group"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
@@ -133,7 +133,7 @@ export function Navigation() {
                   <Button 
                     variant="ghost" 
                     size="sm" 
-                    className="hidden md:flex items-center gap-2 h-9 rounded-xl px-4 hover:bg-secondary/50 text-[10px] font-black tracking-widest text-foreground"
+                    className="hidden md:flex items-center gap-2 h-9 rounded-xl px-4 hover:bg-secondary/50 text-[10px] font-black tracking-widest text-black dark:text-white"
                   >
                     <Globe size={16} />
                     <span className="uppercase">{language}</span>
@@ -150,7 +150,7 @@ export function Navigation() {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="h-9 w-9 rounded-xl hover:bg-secondary/50 text-foreground"
+                className="h-9 w-9 rounded-xl hover:bg-secondary/50 text-black dark:text-white"
                 onClick={toggleTheme}
               >
                 {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
@@ -159,7 +159,7 @@ export function Navigation() {
               {user && (
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant="ghost" size="icon" className="relative h-9 w-9 hover:bg-secondary/50 rounded-xl text-foreground">
+                    <Button variant="ghost" size="icon" className="relative h-9 w-9 hover:bg-secondary/50 rounded-xl text-black dark:text-white">
                       <Bell size={20} />
                       {notifications && notifications.length > 0 && (
                         <span className="absolute top-2 right-2 w-2 h-2 bg-destructive rounded-full border border-white"></span>
@@ -233,7 +233,7 @@ export function Navigation() {
               ) : (
                 <div className="flex items-center gap-2">
                   <AuthModal trigger={
-                    <Button size="sm" className="h-9 px-6 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg hover:scale-105 active:scale-95 transition-all gap-2">
+                    <Button size="sm" className="h-9 px-6 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-lg hover:scale-105 active:scale-95 transition-all gap-2 text-black dark:text-white border border-primary/10">
                       <LogIn size={14} /> {t.common.login}
                     </Button>
                   } />
@@ -245,7 +245,7 @@ export function Navigation() {
           <Button 
             variant="ghost" 
             size="icon" 
-            className="lg:hidden h-9 w-9 hover:bg-secondary/50 rounded-xl text-foreground"
+            className="lg:hidden h-9 w-9 hover:bg-secondary/50 rounded-xl text-black dark:text-white"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -260,7 +260,7 @@ export function Navigation() {
               <Link 
                 key={link.name} 
                 href={link.href}
-                className="flex items-center justify-center h-12 text-[10px] font-black uppercase tracking-widest text-foreground bg-secondary/20 rounded-2xl hover:bg-primary/10 hover:text-primary transition-all"
+                className="flex items-center justify-center h-12 text-[10px] font-black uppercase tracking-widest text-black dark:text-white bg-secondary/20 rounded-2xl hover:bg-primary/10 hover:text-primary transition-all"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
@@ -269,10 +269,10 @@ export function Navigation() {
           </div>
           <div className="flex flex-col gap-2 pt-2">
             <div className="flex flex-wrap gap-2">
-              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-foreground" onClick={() => { setLanguage('ar'); setIsOpen(false); }}>العربية</Button>
-              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-foreground" onClick={() => { setLanguage('en'); setIsOpen(false); }}>English</Button>
-              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-foreground" onClick={() => { setLanguage('rw'); setIsOpen(false); }}>Kinyarwanda</Button>
-              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-foreground" onClick={() => { setLanguage('fr'); setIsOpen(false); }}>Français</Button>
+              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-black dark:text-white" onClick={() => { setLanguage('ar'); setIsOpen(false); }}>العربية</Button>
+              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-black dark:text-white" onClick={() => { setLanguage('en'); setIsOpen(false); }}>English</Button>
+              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-black dark:text-white" onClick={() => { setLanguage('rw'); setIsOpen(false); }}>Kinyarwanda</Button>
+              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-black dark:text-white" onClick={() => { setLanguage('fr'); setIsOpen(false); }}>Français</Button>
             </div>
             {!user && (
               <AuthModal trigger={
