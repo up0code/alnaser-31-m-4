@@ -1,0 +1,35 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-community",
+      "description": "A diverse community gathering",
+      "imageUrl": "https://picsum.photos/seed/community/1200/800",
+      "imageHint": "community gathering"
+    },
+    {
+      "id": "project-garden",
+      "description": "Lush community garden",
+      "imageUrl": "https://picsum.photos/seed/garden/600/400",
+      "imageHint": "community garden"
+    },
+    {
+      "id": "project-coding",
+      "description": "Youth learning to code",
+      "imageUrl": "https://picsum.photos/seed/coding/600/400",
+      "imageHint": "youth coding"
+    },
+    {
+      "id": "project-recycling",
+      "description": "Recycling initiative bins",
+      "imageUrl": "https://picsum.photos/seed/recycling/600/400",
+      "imageHint": "recycling environment"
+    },
+    {
+      "id": "news-featured",
+      "description": "Community celebration event",
+      "imageUrl": "https://picsum.photos/seed/news/800/600",
+      "imageHint": "community celebration"
+    }
+  ]
+}

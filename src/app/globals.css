@@ -1,0 +1,90 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 225 100% 98%;
+    --foreground: 221 40% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 221 40% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 40% 15%;
+    --primary: 221 72% 52%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 221 30% 90%;
+    --secondary-foreground: 221 72% 30%;
+    --muted: 221 30% 92%;
+    --muted-foreground: 221 20% 45%;
+    --accent: 142 70% 45%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 221 30% 88%;
+    --input: 221 30% 88%;
+    --ring: 221 72% 52%;
+    --radius: 1.5rem;
+    --chart-1: 221 72% 52%;
+    --chart-2: 142 70% 45%;
+    --chart-3: 31 97% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 160 60% 45%;
+  }
+
+  .dark {
+    --background: 222 15% 45%; 
+    --foreground: 213 31% 98%;
+    --card: 222 15% 50%; 
+    --card-foreground: 213 31% 98%;
+    --popover: 222 15% 50%;
+    --popover-foreground: 213 31% 98%;
+    --primary: 217 91% 75%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 222 15% 55%;
+    --secondary-foreground: 213 31% 98%;
+    --muted: 223 15% 60%;
+    --muted-foreground: 215 20% 95%;
+    --accent: 142 70% 65%;
+    --accent-foreground: 222 47% 11%;
+    --border: 223 15% 55%;
+    --input: 223 15% 55%;
+    --ring: 217 91% 75%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  width: 3rem;
+  height: 0.25rem;
+  background-color: hsl(var(--primary));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+[dir="rtl"] .section-title::after {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}

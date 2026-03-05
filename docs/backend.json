@@ -1,0 +1,36 @@
+
+{
+  "entities": {
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Represents a member or administrator within the ANNA Association.",
+      "properties": {
+        "id": { "type": "string" },
+        "memberNumber": { "type": "string", "description": "Unique 6-digit membership ID number." },
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phoneNumber": { "type": "string" },
+        "address": { "type": "string" },
+        "profileImageUrl": { "type": "string", "format": "uri" },
+        "memberSince": { "type": "string", "format": "date-time" },
+        "status": { "type": "string" },
+        "role": { "type": "string" },
+        "committeeIds": { "type": "array", "items": { "type": "string" } },
+        "projectIds": { "type": "array", "items": { "type": "string" } },
+        "eventRsvpIds": { "type": "array", "items": { "type": "string" } },
+        "nationalId": { "type": "string" },
+        "bloodType": { "type": "string" },
+        "emergencyContact": { "type": "string" },
+        "birthDate": { "type": "string", "format": "date" },
+        "qrCode": { "type": "string" }
+      },
+      "required": ["id", "memberNumber", "firstName", "lastName", "email", "memberSince", "status", "role"]
+    }
+  },
+  "auth": {
+    "providers": ["password", "anonymous", "google.com", "facebook.com"]
+  }
+}

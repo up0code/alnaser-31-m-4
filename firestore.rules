@@ -1,0 +1,129 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- GLOBAL HELPER FUNCTIONS ---
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isSuperAdmin() {
+      return isSignedIn() && request.auth.token.email == 'up0code@gmail.com';
+    }
+
+    // Role check helper - Non-recursive
+    function getRole() {
+      return get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role;
+    }
+
+    function isManagement() {
+      return isSignedIn() && (isSuperAdmin() || getRole() in ['admin', 'president', 'treasurer', 'secretary', 'executive']);
+    }
+
+    // --- PRIVACY-FIRST COLLECTION RULES ---
+
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if isManagement();
+    }
+
+    match /events/{eventId} {
+      allow read: if true;
+      allow write: if isManagement();
+      
+      match /attendees/{userId} {
+        allow get, list: if isSignedIn();
+        allow create: if isOwner(userId);
+        allow update, delete: if isOwner(userId) || isManagement();
+      }
+    }
+
+    match /newsArticles/{articleId} {
+      allow read: if true;
+      allow write: if isManagement();
+    }
+
+    match /announcements/{announcementId} {
+      allow read: if true;
+      allow write: if isManagement();
+    }
+
+    match /system_settings/{settingId} {
+      allow read: if true; 
+      allow write: if isManagement();
+    }
+
+    match /annual_reports/{reportId} {
+      // All signed-in members can see reports for transparency
+      allow get, list: if isSignedIn();
+      allow write: if isManagement();
+    }
+
+    match /userProfiles/{userId} {
+      // Allow guests to see names/avatars for the directory listing
+      // But only allow full document 'get' for signed-in members
+      allow get: if isSignedIn(); 
+      allow list: if true; 
+      
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId) || isManagement();
+      allow delete: if isManagement();
+
+      match /membershipPayments/{paymentId} {
+        allow read: if isOwner(userId) || isManagement();
+        allow write: if isManagement();
+      }
+
+      match /notifications/{notificationId} {
+        allow read: if isOwner(userId) || isManagement();
+        allow write: if isManagement();
+      }
+    }
+
+    match /applications/{applicationId} {
+      allow read: if isManagement();
+      allow create: if true; 
+      allow update, delete: if isManagement();
+    }
+
+    match /all_payments/{paymentId} {
+      allow read, write: if isManagement();
+    }
+
+    match /committees/{committeeId} {
+      allow read: if true;
+      allow write: if isManagement();
+    }
+
+    match /audit_logs/{logId} {
+      allow read, write: if isManagement();
+    }
+
+    match /trash/{itemId} {
+      allow read, write: if isManagement();
+    }
+
+    match /newsletter_subscribers/{subId} {
+      allow read: if isManagement();
+      allow create: if true; 
+      allow delete: if isManagement();
+    }
+
+    match /messages/{msgId} {
+      allow read: if isManagement();
+      allow create: if true; 
+      allow delete: if isManagement();
+    }
+
+    // Catch-all for super admin
+    match /{document=**} {
+      allow read, write: if isSuperAdmin();
+    }
+  }
+}
