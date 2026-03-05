@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -103,8 +102,8 @@ export function Navigation() {
               <Users size={20} />
             </div>
             <div className="hidden sm:block text-left">
-              <h1 className="font-headline font-bold text-xs leading-tight text-foreground">{t.common.appName}</h1>
-              <p className="text-[9px] text-muted-foreground font-headline uppercase tracking-widest opacity-70">
+              <h1 className="font-headline font-black text-sm leading-tight text-foreground">{t.common.appName}</h1>
+              <p className="text-[9px] text-foreground font-headline uppercase tracking-widest font-black">
                 {language === 'ar' ? 'منصة إدارة المجتمع' : language === 'rw' ? 'Urubuga rw\'abaturage' : language === 'fr' ? 'Hub Communautaire' : 'Community Hub'}
               </p>
             </div>
@@ -117,7 +116,7 @@ export function Navigation() {
               <Link 
                 key={link.name} 
                 href={link.href}
-                className="text-[10px] font-black uppercase tracking-[0.2em] hover:text-primary transition-all text-foreground/70 relative group"
+                className="text-[10px] font-black uppercase tracking-[0.2em] hover:text-primary transition-all text-foreground relative group"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
@@ -261,7 +260,7 @@ export function Navigation() {
               <Link 
                 key={link.name} 
                 href={link.href}
-                className="flex items-center justify-center h-12 text-[10px] font-black uppercase tracking-widest text-foreground/80 bg-secondary/20 rounded-2xl hover:bg-primary/10 hover:text-primary transition-all"
+                className="flex items-center justify-center h-12 text-[10px] font-black uppercase tracking-widest text-foreground bg-secondary/20 rounded-2xl hover:bg-primary/10 hover:text-primary transition-all"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
@@ -270,10 +269,10 @@ export function Navigation() {
           </div>
           <div className="flex flex-col gap-2 pt-2">
             <div className="flex flex-wrap gap-2">
-              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase" onClick={() => { setLanguage('ar'); setIsOpen(false); }}>العربية</Button>
-              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase" onClick={() => { setLanguage('en'); setIsOpen(false); }}>English</Button>
-              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase" onClick={() => { setLanguage('rw'); setIsOpen(false); }}>Kinyarwanda</Button>
-              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase" onClick={() => { setLanguage('fr'); setIsOpen(false); }}>Français</Button>
+              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-foreground" onClick={() => { setLanguage('ar'); setIsOpen(false); }}>العربية</Button>
+              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-foreground" onClick={() => { setLanguage('en'); setIsOpen(false); }}>English</Button>
+              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-foreground" onClick={() => { setLanguage('rw'); setIsOpen(false); }}>Kinyarwanda</Button>
+              <Button variant="outline" className="flex-1 min-w-[80px] rounded-2xl h-12 text-[9px] font-black uppercase text-foreground" onClick={() => { setLanguage('fr'); setIsOpen(false); }}>Français</Button>
             </div>
             {!user && (
               <AuthModal trigger={
