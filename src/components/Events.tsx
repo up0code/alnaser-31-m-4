@@ -11,7 +11,6 @@ import {
   Clock, 
   ChevronLeft, 
   ChevronRight, 
-  PlusCircle,
   CheckCircle2,
   Users as UsersIcon
 } from 'lucide-react';
@@ -37,7 +36,6 @@ export function Events() {
 
   const profileRef = useMemoFirebase(() => user ? doc(db, 'userProfiles', user.uid) : null, [db, user]);
   const { data: profile } = useDoc(profileRef);
-  const canAddEvent = profile?.role === 'admin' || profile?.role === 'secretary';
 
   const events = [
     { id: '1', day: 15, title: t.events.items[0].title, time: language === 'ar' ? "6:00 مساءً" : "6:00 PM", loc: t.events.items[0].loc, type: "social", desc: "A gathering for community members to discuss social initiatives." },
@@ -82,11 +80,6 @@ export function Events() {
             <h2 className="font-headline font-bold text-3xl md:text-4xl mb-2 relative section-title inline-block text-foreground">{t.events.title}</h2>
             <p className="text-base text-muted-foreground mt-4 leading-relaxed max-w-2xl">{t.events.subtitle}</p>
           </div>
-          {canAddEvent && (
-            <Button size="sm" className="rounded-xl gap-2 h-9 px-6 text-sm font-bold shadow-lg uppercase tracking-wider" onClick={() => window.location.href = '/admin'}>
-              <PlusCircle size={18} /> {t.events.addEvent}
-            </Button>
-          )}
         </div>
 
         <div className="grid lg:grid-cols-4 gap-8">
