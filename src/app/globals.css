@@ -5,24 +5,24 @@
 
 @layer base {
   :root {
-    --background: 225 100% 98%;
-    --foreground: 221 40% 15%;
+    --background: 225 100% 99%;
+    --foreground: 221 45% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 221 40% 15%;
+    --card-foreground: 221 45% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 221 40% 15%;
+    --popover-foreground: 221 45% 10%;
     --primary: 221 72% 52%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 221 30% 90%;
-    --secondary-foreground: 221 72% 30%;
-    --muted: 221 30% 92%;
-    --muted-foreground: 221 20% 45%;
+    --secondary: 221 30% 92%;
+    --secondary-foreground: 221 72% 25%;
+    --muted: 221 30% 94%;
+    --muted-foreground: 221 25% 35%;
     --accent: 142 70% 45%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 221 30% 88%;
-    --input: 221 30% 88%;
+    --border: 221 30% 90%;
+    --input: 221 30% 90%;
     --ring: 221 72% 52%;
     --radius: 1.5rem;
     --chart-1: 221 72% 52%;
@@ -33,23 +33,23 @@
   }
 
   .dark {
-    --background: 222 15% 45%; 
+    --background: 222 47% 11%;
     --foreground: 213 31% 98%;
-    --card: 222 15% 50%; 
+    --card: 222 47% 11%;
     --card-foreground: 213 31% 98%;
-    --popover: 222 15% 50%;
+    --popover: 222 47% 11%;
     --popover-foreground: 213 31% 98%;
-    --primary: 217 91% 75%;
+    --primary: 217 91% 60%;
     --primary-foreground: 222 47% 11%;
-    --secondary: 222 15% 55%;
+    --secondary: 222 47% 15%;
     --secondary-foreground: 213 31% 98%;
-    --muted: 223 15% 60%;
-    --muted-foreground: 215 20% 95%;
-    --accent: 142 70% 65%;
+    --muted: 223 47% 15%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 142 70% 55%;
     --accent-foreground: 222 47% 11%;
-    --border: 223 15% 55%;
-    --input: 223 15% 55%;
-    --ring: 217 91% 75%;
+    --border: 222 47% 15%;
+    --input: 222 47% 15%;
+    --ring: 217 91% 60%;
   }
 }
 
@@ -58,7 +58,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body transition-colors duration-300;
+    @apply bg-background text-foreground font-body transition-colors duration-300 antialiased;
   }
 }
 

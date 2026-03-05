@@ -36,11 +36,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Helper to convert HEX to HSL and set CSS variable
   const applyColor = (variable: string, hex: string) => {
-    if (!hex) return;
+    if (!hex || !hex.startsWith('#')) return;
+    
     const cleanHex = hex.replace('#', '');
-    const r = parseInt(cleanHex.substring(0, 2), 16) / 255;
-    const g = parseInt(cleanHex.substring(2, 4), 16) / 255;
-    const b = parseInt(cleanHex.substring(4, 6), 16) / 255;
+    if (cleanHex.length !== 6 && cleanHex.length !== 3) return;
+
+    const r = parseInt(cleanHex.length === 3 ? cleanHex[0] + cleanHex[0] : cleanHex.substring(0, 2), 16) / 255;
+    const g = parseInt(cleanHex.length === 3 ? cleanHex[1] + cleanHex[1] : cleanHex.substring(2, 4), 16) / 255;
+    const b = parseInt(cleanHex.length === 3 ? cleanHex[2] + cleanHex[2] : cleanHex.substring(4, 6), 16) / 255;
     
     const max = Math.max(r, g, b), min = Math.min(r, g, b);
     let h = 0, s = 0, l = (max + min) / 2;
@@ -55,6 +58,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       }
       h /= 6;
     }
+    
+    // Set variable in standard Tailwind format: H S% L%
     document.documentElement.style.setProperty(variable, `${Math.round(h * 360)} ${Math.round(s * 100)}% ${Math.round(l * 100)}%`);
   };
 
@@ -87,7 +92,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       applyColor('--chart-2', settings.accentColor);
     }
 
-    // Apply UI Colors (Only in Light Mode to prevent breaking Dark Mode)
+    // Apply UI Colors (Only in Light Mode to prevent breaking Dark Mode variables)
     if (theme === 'light') {
       if (settings.backgroundColor) applyColor('--background', settings.backgroundColor);
       if (settings.cardColor) applyColor('--card', settings.cardColor);
